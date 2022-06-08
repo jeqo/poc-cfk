@@ -1,0 +1,21 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Zookeeper
+metadata:
+  name: zookeeper
+spec:
+  # initial minimal replicas
+  replicas: 1
+  image:
+    application: confluentinc/cp-zookeeper:7.1.0
+    init: confluentinc/confluent-init-container:2.3.1
+  # minimum data capacity
+  dataVolumeCapacity: 10Gi
+  logVolumeCapacity: 10Gi
+  podTemplate:
+    # minimal resources
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    # disabling kubernetes security for container exec
+    podSecurityContext: {}

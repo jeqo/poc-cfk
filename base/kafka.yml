@@ -1,0 +1,20 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka
+spec:
+  # initial minimal replicas, will require changing basic configs
+  replicas: 1
+  image:
+    application: confluentinc/cp-server:7.1.0
+    init: confluentinc/confluent-init-container:2.3.0
+  # minimal data capacity
+  dataVolumeCapacity: 10Gi
+  podTemplate:
+    # minimal resources
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+    # disabling kubernetes security for container exec
+    podSecurityContext: {}
