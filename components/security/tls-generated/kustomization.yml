@@ -1,8 +1,5 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-resources:
-  - ./../../deployment/single-node
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
 
 patchesStrategicMerge:
   - zookeeper.yml
@@ -10,10 +7,11 @@ patchesStrategicMerge:
   - controlcenter.yml
 
 generatorOptions:
-  disableNameSuffixHash: true
 
 secretGenerator:
   - name: ca-pair-sslcerts # seems that cfk is expecting this name to autogenerate
+    options:
+      disableNameSuffixHash: true
     files:
       - tls.crt=ca.pem
       - tls.key=ca-key.pem
