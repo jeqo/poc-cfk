@@ -1,0 +1,24 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka
+spec:
+  metricReporter:
+    enabled: true
+    authentication:
+      type: plain
+      jaasConfig:
+        secretRef: kafka-credentials
+  listeners:
+    internal:
+      authentication:
+        type: plain
+        jaasConfig:
+          secretRef: kafka-credentials
+  dependencies:
+    zookeeper:
+      endpoint: zookeeper.confluent.svc.cluster.local:2182
+      authentication:
+        type: digest
+        jaasConfig:
+          secretRef: kafka-credentials

@@ -1,0 +1,65 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: producer-perf
+spec:
+  serviceName: producer-perf
+  podManagementPolicy: Parallel
+  replicas: 1
+  selector:
+    matchLabels:
+      app: producer-perf
+  template:
+    metadata:
+      labels:
+        app: producer-perf
+    spec:
+      containers:
+      - name: producer-perf
+        image: confluentinc/cp-server:7.1.0
+        command:
+        - /bin/sh
+        - -c
+        - |
+          kafka-producer-perf-test \
+            --topic producer-perf-0  \
+            --record-size 512 \
+            --throughput 10000 \
+            --producer.config /mnt/kafka.properties \
+            --num-records 1000000
+        volumeMounts:
+        - name: kafka-properties
+          mountPath: /mnt
+          readOnly: true
+        - name: ca-certs
+          mountPath: /certs
+          readOnly: true
+        resources:
+          requests:
+            memory: 512Mi # 768Mi
+            cpu: 500m # 1000m
+      volumes:
+        - name: kafka-properties # Create secret with name `kafka-client-config` with client configurations
+          secret:
+            secretName: kafka-client-config
+        - name: ca-certs
+          secret:
+            secretName: ca-pair-sslcerts
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: producer-perf
+# spec:
+#   clusterIP: None
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: producer-perf-0
+spec:
+  replicas: 1
+  partitionCount: 1
+  configs:
+    cleanup.policy: "delete"

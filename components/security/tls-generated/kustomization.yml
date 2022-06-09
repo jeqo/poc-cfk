@@ -6,8 +6,6 @@ patchesStrategicMerge:
   - kafka.yml
   - controlcenter.yml
 
-generatorOptions:
-
 secretGenerator:
   - name: ca-pair-sslcerts # seems that cfk is expecting this name to autogenerate
     options:

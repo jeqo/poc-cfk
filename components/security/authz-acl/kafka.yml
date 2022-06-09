@@ -1,0 +1,10 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka
+spec:
+  authorization:
+    type: simple
+    superUsers:
+      - User:kafka
+      - User:c3
