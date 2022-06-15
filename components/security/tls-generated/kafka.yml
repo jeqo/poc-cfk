@@ -19,6 +19,6 @@ spec:
       enabled: true
   dependencies:
     zookeeper:
-      endpoint: zookeeper.confluent.svc.cluster.local:2182
+      endpoint: zookeeper:2182
       tls:
         enabled: true

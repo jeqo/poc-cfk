@@ -1,0 +1,7 @@
+# Manage clusters in multiple namespaces
+# namespaced: false
+
+# Enable Health+
+telemetry:
+  enabled: true
+  secretRef: telemetry

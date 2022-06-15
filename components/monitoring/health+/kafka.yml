@@ -1,0 +1,8 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka
+spec:
+  mountedSecrets:
+    - secretRef: telemetry
+

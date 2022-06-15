@@ -3,7 +3,5 @@ kind: Zookeeper
 metadata:
   name: zookeeper
 spec:
-  authentication:
-    type: digest
-    jaasConfig:
-      secretRef: zookeeper-credentials
+  mountedSecrets:
+    - secretRef: telemetry

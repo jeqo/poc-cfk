@@ -1,7 +1,7 @@
 apiVersion: platform.confluent.io/v1beta1
-kind: ControlCenter
+kind: SchemaRegistry
 metadata:
-  name: controlcenter
+  name: schemaregistry
 spec:
   dependencies:
     kafka:
@@ -9,4 +9,4 @@ spec:
       authentication:
         type: plain
         jaasConfig:
-          secretRef: controlcenter-credentials
+          secretRef: schemaregistry-credentials

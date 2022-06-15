@@ -1,4 +1,4 @@
 {
-  "kafka": "kafka-secret"
+  "devkafka": "kafka-secret"
 }
 

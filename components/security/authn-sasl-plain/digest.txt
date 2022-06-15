@@ -1,2 +1,2 @@
-username="kafka"
+username="devkafka"
 password="kafka-secret"

@@ -1,0 +1,2 @@
+api.key=JFUN3MN6ZCYPMGN2
+api.secret=Bjg4vJypf/EV1K8doaJk54i+Sf4ypVCB5RRoGFAx3HZcWKxbmFbD8U4hlbZL1Wt1

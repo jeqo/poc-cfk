@@ -17,8 +17,8 @@ spec:
           secretRef: kafka-credentials
   dependencies:
     zookeeper:
-      endpoint: zookeeper.confluent.svc.cluster.local:2182
+      endpoint: zookeeper:2182
       authentication:
         type: digest
         jaasConfig:
-          secretRef: kafka-credentials
+          secretRef: zookeeper-credentials

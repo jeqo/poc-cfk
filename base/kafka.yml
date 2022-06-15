@@ -18,3 +18,6 @@ spec:
         memory: 512Mi
     # disabling kubernetes security for container exec
     podSecurityContext: {}
+  dependencies:
+    zookeeper:
+      endpoint: zookeeper:2182

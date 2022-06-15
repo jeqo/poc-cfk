@@ -1,2 +1,2 @@
-username=c3
-password=c3-secret
+username=devc3
+password=c3-secret1

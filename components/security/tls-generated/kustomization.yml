@@ -4,6 +4,7 @@ kind: Component
 patchesStrategicMerge:
   - zookeeper.yml
   - kafka.yml
+  - schemaregistry.yml
   - controlcenter.yml
 
 secretGenerator:

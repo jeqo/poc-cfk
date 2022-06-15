@@ -2,14 +2,23 @@ apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
 secretGenerator:
-- name: kafka-credentials
+- name: zookeeper-credentials
   options:
     disableNameSuffixHash: true
   files:
     - digest.txt
     - digest-users.json
+- name: kafka-credentials
+  options:
+    disableNameSuffixHash: true
+  files:
     - plain.txt
     - plain-users.json
+- name: schemaregistry-credentials
+  options:
+    disableNameSuffixHash: true
+  files:
+    - plain.txt=schemaregistry-plain.txt
 - name: controlcenter-credentials
   options:
     disableNameSuffixHash: true
@@ -19,4 +28,5 @@ secretGenerator:
 patchesStrategicMerge:
   - zookeeper.yml
   - kafka.yml
+  - schemaregistry.yml
   - controlcenter.yml

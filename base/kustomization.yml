@@ -5,5 +5,5 @@ kind: Kustomization
 resources:
   - zookeeper.yml
   - kafka.yml
+  - schemaregistry.yml
   - controlcenter.yml
-
