@@ -6,9 +6,22 @@ resources:
   - rolebindings.yml
 
 components:
-  - ./../../components/security/tls-generated
-  - ./../../components/security/authn-sasl-plain
-  - ./../../components/security/authz-rbac
+  - ./../../components/security/tls_auto+sasl_plain+sasl_ldap+rbac
   - ./../../components/deployment/single-node
   - ./../../components/monitoring/prometheus-grafana
-    # - ./../../components/monitoring/health+
+
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: ca-pair-sslcerts # seems that cfk is expecting this name to autogenerate
+    type: "kubernetes.io/tls"
+    files:
+      - ./assets/tls/tls.crt
+      - ./assets/tls/tls.key
+  - name: mds-token
+    files:
+      - ./assets/rbac/mdsTokenKeyPair.pem
+      - ./assets/rbac/mdsPublicKey.pem
+

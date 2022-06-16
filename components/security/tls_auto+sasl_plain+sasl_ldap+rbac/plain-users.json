@@ -1,0 +1,6 @@
+{
+  "kafka_client": "kafka_client-secret",
+  "devc3": "c3-secret1",
+  "devsr": "sr-secret1",
+  "devkafka": "kafka-secret1"
+}

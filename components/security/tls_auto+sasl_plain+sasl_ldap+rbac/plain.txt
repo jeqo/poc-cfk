@@ -1,0 +1,3 @@
+username=devkafka
+password=kafka-secret1
+

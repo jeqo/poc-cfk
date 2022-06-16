@@ -3,8 +3,6 @@ kind: Connect
 metadata:
   name: connect
 spec:
-  tls:
-    secretRef: tls-connect
   dependencies:
     kafka:
       authentication:

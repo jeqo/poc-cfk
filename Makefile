@@ -1,4 +1,4 @@
-all:
+all: helm-repos helm-openldap-install helm-cfk-install helm-cfk-telemetry helm-prometheus-install helm-grafana-install
 
 helm-repos:
 	helm repo add confluentinc https://packages.confluent.io/helm

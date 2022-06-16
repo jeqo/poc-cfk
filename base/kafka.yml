@@ -18,6 +18,9 @@ spec:
         memory: 512Mi
     # disabling kubernetes security for container exec
     podSecurityContext: {}
+  metricReporter:
+    enabled: true
+    bootstrapEndpoint: kafka:9071
   dependencies:
     zookeeper:
       endpoint: zookeeper:2182

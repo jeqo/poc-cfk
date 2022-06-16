@@ -1,0 +1,71 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+patchesStrategicMerge:
+  - zookeeper.yml
+  - kafka.yml
+  - schemaregistry.yml
+  - connect.yml
+  - controlcenter.yml
+
+resources:
+  - kafkarest.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: zookeeper-credentials
+    files:
+      - digest.txt
+      - digest-users.json
+
+  - name: kafka-credentials
+    files:
+      - plain.txt
+      - plain-users.json
+
+  - name: ldap-credential
+    literals:
+      - |
+        ldap.txt=username=cn=devmds,dc=test,dc=com
+        password=Developer!
+
+  - name: sr-mds-client
+    literals:
+      - |
+        bearer.txt=username=devsr
+        password=sr-secret
+
+  - name: connect-mds-client
+    literals:
+      - |
+        bearer.txt=username=devconnect
+        password=connect-secret
+
+  - name: c3-mds-client
+    literals:
+      - |
+        bearer.txt=username=devc3
+        password=c3-secret
+  
+  - name: mds-client
+    literals:
+      - |
+        bearer.txt=username=devkafka
+        password=kafka-secret
+  
+  - name: in-kafka-plainldap
+    literals:
+      - |
+        plain-interbroker.txt=username=devkafka
+        password=kafka-secret
+  
+  - name: rest-credential
+    literals:
+      - |
+        bearer.txt=username=devkafka
+        password=kafka-secret
+      - |
+        basic.txt=username=devkafka
+        password=kafka-secret
