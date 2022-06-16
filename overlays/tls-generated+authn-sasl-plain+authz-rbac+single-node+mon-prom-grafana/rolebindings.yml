@@ -1,0 +1,10 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: ConfluentRolebinding
+metadata:
+  name: alice-rb
+  namespace: confluent
+spec:
+  principal:
+    type: user
+    name: testadmin
+  role: Operator

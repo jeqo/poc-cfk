@@ -4,4 +4,5 @@ kind: Component
 patchesStrategicMerge:
   - kafka.yml
   - schemaregistry.yml
+  - connect.yml
   - controlcenter.yml

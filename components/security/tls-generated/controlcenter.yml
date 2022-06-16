@@ -14,3 +14,6 @@ spec:
       url: https://schemaregistry:8081
       tls:
         enabled: true
+    connect:
+      - name: connect-dev
+        url:  https://connect:8083

@@ -19,6 +19,11 @@ secretGenerator:
     disableNameSuffixHash: true
   files:
     - plain.txt=schemaregistry-plain.txt
+- name: connect-credentials
+  options:
+    disableNameSuffixHash: true
+  files:
+    - plain.txt=connect-plain.txt
 - name: controlcenter-credentials
   options:
     disableNameSuffixHash: true
@@ -29,4 +34,5 @@ patchesStrategicMerge:
   - zookeeper.yml
   - kafka.yml
   - schemaregistry.yml
+  - connect.yml
   - controlcenter.yml

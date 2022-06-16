@@ -1,0 +1,13 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Connect
+metadata:
+  name: connect
+spec:
+  tls:
+    secretRef: tls-connect
+  dependencies:
+    kafka:
+      authentication:
+        type: plain
+        jaasConfig:
+          secretRef: connect-credentials

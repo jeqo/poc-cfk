@@ -23,6 +23,14 @@ secretGenerator:
         bearer.txt=username=devsr
         password=sr-secret
 
+  - name: connect-mds-client
+    options:
+      disableNameSuffixHash: true
+    literals:
+      - |
+        bearer.txt=username=devconnect
+        password=connect-secret
+
   - name: c3-mds-client
     options:
       disableNameSuffixHash: true
@@ -53,6 +61,7 @@ secretGenerator:
 patchesStrategicMerge:
   - kafka.yml
   - schemaregistry.yml
+  - connect.yml
   - controlcenter.yml
 
 resources:

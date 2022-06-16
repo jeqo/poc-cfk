@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ./../../base
+  - rolebindings.yml
 
 components:
   - ./../../components/security/tls-generated

@@ -13,3 +13,6 @@ spec:
         cpu: 100m
         memory: 256Mi
     podSecurityContext: {}
+  dependencies:
+    kafka:
+      bootstrapEndpoint: kafka:9071
