@@ -1,0 +1,2 @@
+username=devconnect
+password=connect-secret1

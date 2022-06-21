@@ -22,6 +22,8 @@ spec:
     # disabling kubernetes security for container exec
     podSecurityContext: {}
   dependencies:
+    kafka:
+       bootstrapEndpoint: kafka:9071
     schemaRegistry:
       url: http://schemaregistry:8081
         #ksqldb:

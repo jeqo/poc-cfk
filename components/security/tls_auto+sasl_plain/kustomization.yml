@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+patchesStrategicMerge:
+  - zookeeper.yml
+  - kafka.yml
+  - schemaregistry.yml
+  - connect.yml
+  - controlcenter.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: zookeeper-credentials
+    files:
+      - digest-users.json=zk-users.json
+      - digest.txt=kafka-zk-auth.txt
+  - name: kafka-credentials
+    files:
+      - plain-users.json=kafka-users.json
+      - plain.txt=kafka-sasl.txt
+  - name: schemaregistry-credentials
+    files:
+      - plain.txt=schemaregistry-sasl.txt
+  - name: connect-credentials
+    files:
+      - plain.txt=connect-sasl.txt
+  - name: controlcenter-credentials
+    files:
+      - plain.txt=controlcenter-sasl.txt
+  

@@ -1,0 +1,2 @@
+username=devc3
+password=c3-secret1
