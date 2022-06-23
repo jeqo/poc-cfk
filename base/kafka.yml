@@ -14,10 +14,12 @@ spec:
     # minimal resources
     resources:
       requests:
-        cpu: 200m
-        memory: 512Mi
-    # disabling kubernetes security for container exec
-    podSecurityContext: {}
+        cpu: 2000m
+        memory: 6Gi
+    podSecurityContext:
+      fsGroup: 1000
+      runAsUser: 1000
+      runAsNonRoot: true
   metricReporter:
     enabled: true
     bootstrapEndpoint: kafka:9071

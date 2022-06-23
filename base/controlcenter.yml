@@ -11,16 +11,18 @@ spec:
   podTemplate:
     resources:
       requests:
-        cpu: 500m
-        memory: 512Mi
+        cpu: 2000m
+        memory: 6Gi
     probe:
       # how long to wait for c3 ui getting ready
       liveness:
         periodSeconds: 10
         failureThreshold: 5
         timeoutSeconds: 500
-    # disabling kubernetes security for container exec
-    podSecurityContext: {}
+    podSecurityContext:
+      fsGroup: 1000
+      runAsUser: 1000
+      runAsNonRoot: true
   dependencies:
     kafka:
        bootstrapEndpoint: kafka:9071

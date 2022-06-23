@@ -7,6 +7,12 @@ spec:
   image:
     application: confluentinc/cp-server-connect:7.1.0
     init: confluentinc/confluent-init-container:2.3.0
+  podTemplate:
+    # minimal resources
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 2Gi
   dependencies:
     kafka:
       bootstrapEndpoint: kafka:9071

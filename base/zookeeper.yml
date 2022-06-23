@@ -17,7 +17,9 @@ spec:
     # minimal resources
     resources:
       requests:
-        cpu: 100m
-        memory: 256Mi
-    # disabling kubernetes security for container exec
-    podSecurityContext: {}
+        cpu: 1000m
+        memory: 2Gi
+    podSecurityContext:
+      fsGroup: 1000
+      runAsUser: 1000
+      runAsNonRoot: true

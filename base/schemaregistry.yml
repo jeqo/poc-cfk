@@ -6,12 +6,12 @@ spec:
   replicas: 1
   image:
     application: confluentinc/cp-schema-registry:7.1.0
-    init: confluentinc/confluent-init-container:2.3.0
+    init: confluentinc/confluent-init-container:2.3.1
   podTemplate:
     resources:
       requests:
-        cpu: 100m
-        memory: 256Mi
+        cpu: 500m
+        memory: 512Mi
     podSecurityContext: {}
   dependencies:
     kafka:

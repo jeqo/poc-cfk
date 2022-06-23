@@ -2,6 +2,6 @@
 # namespaced: false
 
 # Enable Health+
-telemetry:
-  enabled: true
-  secretRef: telemetry
+# telemetry:
+#   enabled: true
+#   secretRef: telemetry

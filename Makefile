@@ -43,4 +43,9 @@ helm-grafana-install:
 	helm upgrade --install grafana \
 		grafana/grafana \
 		--namespace monitoring \
-		--create-namespace
+		--create-namespace \
+		--set persistence.enabled=true \
+		--values helm/grafana/values.yml
+
+helm-grafana-password:
+	kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
