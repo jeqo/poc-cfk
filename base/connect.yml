@@ -13,6 +13,15 @@ spec:
       requests:
         cpu: 1000m
         memory: 2Gi
+  build:
+    type: onDemand
+    onDemand:
+      plugins:
+        locationType: confluentHub
+        confluentHub:
+          - name: kafka-connect-datagen
+            owner: confluentinc
+            version: 0.5.3
   dependencies:
     kafka:
       bootstrapEndpoint: kafka:9071

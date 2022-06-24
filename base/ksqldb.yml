@@ -1,0 +1,19 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: KsqlDB
+metadata:
+  name: ksqldb
+spec:
+  image:
+    application: confluentinc/cp-ksqldb-server:7.1.0
+    init: confluentinc/confluent-init-container:2.3.0
+  dataVolumeCapacity: 10Gi
+  podTemplate:
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 2Gi
+    probe:
+      liveness:
+        periodSeconds: 10
+        failureThreshold: 5
+        timeoutSeconds: 500 

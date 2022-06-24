@@ -3,5 +3,7 @@ kind: Component
 
 patchesStrategicMerge:
   - zookeeper.yml
-  - schemaregistry.yml
   - kafka.yml
+  - connect.yml
+  - ksqldb.yml
+  - schemaregistry.yml

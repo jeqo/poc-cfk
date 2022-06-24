@@ -28,9 +28,9 @@ spec:
        bootstrapEndpoint: kafka:9071
     schemaRegistry:
       url: http://schemaregistry:8081
-        #ksqldb:
-        #- name: ksql-dev
-        #  url: http://ksqldb.confluent.svc.cluster.local:8088
+    ksqldb:
+      - name: ksql-dev
+        url: http://ksqldb:8088
     connect:
       - name: connect-dev
         url:  http://connect:8083

@@ -5,4 +5,5 @@ patchesStrategicMerge:
   - kafka.yml
   - schemaregistry.yml
   - connect.yml
+  - ksqldb.yml
   - controlcenter.yml

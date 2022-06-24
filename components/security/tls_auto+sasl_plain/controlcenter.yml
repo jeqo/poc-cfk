@@ -20,3 +20,10 @@ spec:
     connect:
       - name: connect-dev
         url:  https://connect:8083
+        tls:
+          enabled: true
+    ksqldb:
+      - name: ksql-dev
+        url: https://ksqldb:8088
+        tls:
+          enabled: true

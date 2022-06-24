@@ -6,6 +6,7 @@ patchesStrategicMerge:
   - kafka.yml
   - schemaregistry.yml
   - connect.yml
+  - ksqldb.yml
   - controlcenter.yml
 
 generatorOptions:
@@ -26,6 +27,9 @@ secretGenerator:
   - name: connect-credentials
     files:
       - plain.txt=connect-sasl.txt
+  - name: ksqldb-credentials
+    files:
+      - plain.txt=ksqldb-sasl.txt
   - name: controlcenter-credentials
     files:
       - plain.txt=controlcenter-sasl.txt
