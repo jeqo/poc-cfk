@@ -13,6 +13,9 @@ spec:
       requests:
         cpu: 1000m
         memory: 2Gi
+      limits:
+        cpu: 2000m
+        memory: 4Gi
   build:
     type: onDemand
     onDemand:
@@ -22,6 +25,25 @@ spec:
           - name: kafka-connect-datagen
             owner: confluentinc
             version: 0.5.3
+          - name: kafka-connect-http
+            owner: confluentinc
+            version: 1.5.4
   dependencies:
     kafka:
       bootstrapEndpoint: kafka:9071
+
+  configOverrides:
+    server:
+      - reporter.admin.bootstrap.servers=kafka:9071
+      - reporter.admin.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="${file:/mnt/secrets/connect-credentials/plain.txt:username}" password="${file:/mnt/secrets/connect-credentials/plain.txt:password}";
+      - reporter.admin.sasl.mechanism=PLAIN
+      - reporter.admin.security.protocol=SASL_SSL
+      - reporter.admin.ssl.truststore.location=/mnt/sslcerts/truststore.jks
+      - reporter.admin.ssl.truststore.password=${file:/mnt/sslcerts/jksPassword.txt:jksPassword}
+      - reporter.producer.bootstrap.servers=kafka:9071
+      - reporter.producer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="${file:/mnt/secrets/connect-credentials/plain.txt:username}" password="${file:/mnt/secrets/connect-credentials/plain.txt:password}";
+      - reporter.producer.sasl.mechanism=PLAIN
+      - reporter.producer.security.protocol=SASL_SSL
+      - reporter.producer.ssl.truststore.location=/mnt/sslcerts/truststore.jks
+      - reporter.producer.ssl.truststore.password=${file:/mnt/sslcerts/jksPassword.txt:jksPassword}
+

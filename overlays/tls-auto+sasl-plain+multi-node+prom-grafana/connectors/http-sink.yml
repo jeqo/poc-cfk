@@ -1,0 +1,29 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Connector
+metadata:
+  name: http-sink-test0
+spec:
+  name: http-sink-test0
+  taskMax: 1
+  class: io.confluent.connect.http.HttpSinkConnector
+  configs:
+    key.converter: org.apache.kafka.connect.storage.StringConverter
+    value.converter: org.apache.kafka.connect.storage.StringConverter
+    topics: test
+    http.api.url: http://http-service-no-auth:8080/api/messages
+    
+    reporter.bootstrap.servers: broker:9071
+    reporter.error.topic.name: reporter-error-responses
+    reporter.result.topic.name: reporter-success-responses
+    reporter.admin.bootstrap.servers: kafka:9071
+    reporter.admin.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${file:/mnt/secrets/connect-credentials/plain.txt:username}" password="${file:/mnt/secrets/connect-credentials/plain.txt:password}";
+    reporter.admin.sasl.mechanism: PLAIN
+    reporter.admin.security.protocol: SASL_SSL
+    reporter.admin.ssl.truststore.location: /mnt/sslcerts/truststore.jks
+    reporter.admin.ssl.truststore.password: ${file:/mnt/sslcerts/jksPassword.txt:jksPassword}
+    reporter.producer.bootstrap.servers: kafka:9071
+    reporter.producer.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${file:/mnt/secrets/connect-credentials/plain.txt:username}" password="${file:/mnt/secrets/connect-credentials/plain.txt:password}";
+    reporter.producer.sasl.mechanism: PLAIN
+    reporter.producer.security.protocol: SASL_SSL
+    reporter.producer.ssl.truststore.location: /mnt/sslcerts/truststore.jks
+    reporter.producer.ssl.truststore.password: ${file:/mnt/sslcerts/jksPassword.txt:jksPassword}

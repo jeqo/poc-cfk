@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ./../../base
+  - ./connectors/http-sink.yml
 
 components:
   - ./../../components/security/tls_auto+sasl_plain
