@@ -1,9 +1,9 @@
 apiVersion: platform.confluent.io/v1beta1
 kind: Connector
 metadata:
-  name: http-sink-test0
+  name: http-sink-test1
 spec:
-  name: http-sink-test0
+  name: http-sink-test1
   taskMax: 1
   class: io.confluent.connect.http.HttpSinkConnector
   configs:

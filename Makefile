@@ -39,6 +39,9 @@ helm-prometheus-install:
 		--namespace monitoring \
 		--create-namespace
 
+helm-prometheus-delete:
+	helm delete prometheus --namespace monitoring
+
 helm-grafana-install:
 	helm upgrade --install grafana \
 		grafana/grafana \
@@ -49,3 +52,6 @@ helm-grafana-install:
 
 helm-grafana-password:
 	kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+helm-grafana-delete:
+	helm delete grafana --namespace monitoring
