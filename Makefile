@@ -1,5 +1,11 @@
 all: helm-repos helm-openldap-install helm-cfk-install helm-cfk-telemetry helm-prometheus-install helm-grafana-install
 
+helm-clean:
+	$(MAKE) -i helm-cfk-delete
+	$(MAKE) -i helm-openldap-delete
+	$(MAKE) -i helm-prometheus-delete
+	$(MAKE) -i helm-grafana-delete
+
 helm-repos:
 	helm repo add confluentinc https://packages.confluent.io/helm
 	helm repo add stable https://charts.helm.sh/stable
