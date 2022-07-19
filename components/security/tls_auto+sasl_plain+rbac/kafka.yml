@@ -68,6 +68,14 @@ spec:
         type: digest
         jaasConfig:
           secretRef: zookeeper-credentials
+    schemaRegistry:
+      url: https://schemaregistry:8081
+      tls:
+        enabled: true
+      authentication:
+        type: basic
+        basic:
+          secretRef: rest-credential
     kafkaRest:
       authentication:
         type: bearer

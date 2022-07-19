@@ -6,7 +6,7 @@ resources:
   - rolebindings.yml
 
 components:
-  - ./../../components/security/tls_auto+sasl_plain+sasl_ldap+rbac
+  - ./../../components/security/tls_auto+sasl_plain+rbac
   - ./../../components/deployment/single-node
   - ./../../components/monitoring/prometheus-grafana
 

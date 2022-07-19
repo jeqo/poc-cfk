@@ -30,3 +30,7 @@ spec:
           secretRef: zookeeper-credentials
       tls:
         enabled: true
+    schemaRegistry:
+      url: https://schemaregistry:8081
+      tls:
+        enabled: true

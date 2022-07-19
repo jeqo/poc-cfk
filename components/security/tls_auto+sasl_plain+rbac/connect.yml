@@ -11,6 +11,10 @@ spec:
     kafka:
       tls:
         enabled: true
+    schemaRegistry:
+      url: https://schemaregistry:8081
+      tls:
+        enabled: true
     mds:
       endpoint: https://kafka:8090
       tokenKeyPair:

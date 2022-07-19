@@ -30,7 +30,7 @@ secretGenerator:
       - |
         ldap.txt=username=cn=devmds,dc=test,dc=com
         password=Developer!
-
+  
   - name: sr-mds-client
     literals:
       - |
